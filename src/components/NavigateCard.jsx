@@ -1,18 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NavigateCard = ({ link }) => {
   return (
-    <div className="card" style={{ width: "18rem" }}>
+    <Link
+      to={link.linkTo}
+      className="card hover-overlay"
+      style={{ width: "15rem" }}
+    >
       <img
         className="card-img-top rounded-circle mx-auto mt-3"
-        style={{ width: "150px", height: "150px", objectFit: "cover" }}
+        style={{ width: "10rem", height: "10rem", objectFit: "cover" }}
         src={link.linkImg}
-        alt="Card image cap"
+        alt="card"
       />
-      <div className="card-body mx-auto">
+      <div className="card-body mx-auto ">
         <h5 className="card-title">{link.linkTitle}</h5>
       </div>
-    </div>
+    </Link>
   );
 };
 
