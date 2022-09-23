@@ -25,7 +25,3 @@ In the project directory, you can run:
 
 ### `npm start`
 
-
-
-
-<h2>How does my project look</h2>
