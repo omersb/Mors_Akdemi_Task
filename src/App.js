@@ -1,10 +1,14 @@
 import "./App.css";
+import AppContextProvider from "./context/AppContext";
 import AppRouter from "./router/AppRouter";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <div>
-      <AppRouter />
+      <AppContextProvider>
+        <AppRouter />
+      </AppContextProvider>
     </div>
   );
 }

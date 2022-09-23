@@ -3,9 +3,13 @@ import { IoTrashOutline } from "react-icons/io5";
 import { CgClose } from "react-icons/cg";
 import { GoSearch } from "react-icons/go";
 import { MdOutlineDone } from "react-icons/md";
+import { Button } from "react-bootstrap";
 
-const VideoCard = ({ videoData }) => {
-  //   console.log(videoData);
+const VideoCard = ({ videoData, setVideoData }) => {
+  console.log(videoData);
+  const handleClick = () => {
+    setVideoData(...videoData, (videoData.isOkey = true));
+  };
   return (
     <div className="card" style={{ width: "20rem" }}>
       <img
@@ -33,20 +37,20 @@ const VideoCard = ({ videoData }) => {
 
         <IoTrashOutline className="me-2" tyle={{ fontSize: "1.5rem" }} />
 
-        <button
+        <Button
           type="button"
           className="btn btn-primary mt-2"
           data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
+          data-bs-target={`#exampleModal${videoData.id}`}
         >
           <GoSearch className="me-2" />
           Görüntüle
-        </button>
+        </Button>
 
         <div
           className="modal fade"
-          id="exampleModal"
-          tabindex="-1"
+          id={`exampleModal${videoData.id}`}
+          tabIndex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
@@ -56,12 +60,12 @@ const VideoCard = ({ videoData }) => {
                 <h5 className="modal-title" id="exampleModalLabel">
                   Video
                 </h5>
-                <button
+                <Button
                   type="button"
                   className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
-                ></button>
+                ></Button>
               </div>
               <div className="modal-body ratio ratio-16x9">
                 <iframe
@@ -71,16 +75,21 @@ const VideoCard = ({ videoData }) => {
                 ></iframe>
               </div>
               <div className="modal-footer">
-                <button
+                <Button
                   type="button"
                   className="btn btn-secondary"
                   data-bs-dismiss="modal"
                 >
                   Close
-                </button>
-                <button type="button" className="btn btn-primary">
+                </Button>
+                <Button
+                  type="button"
+                  className="btn btn-primary"
+                  data-bs-dismiss="modal"
+                  onClick={handleClick}
+                >
                   Onayla
-                </button>
+                </Button>
               </div>
             </div>
           </div>
